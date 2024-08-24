@@ -1,0 +1,72 @@
+ <style>
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-image: url("https://static.wikia.nocookie.net/minecraft_gamepedia/images/3/37/Dirt_background_JE1.png/revision/latest?cb=20210820090021");
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+	align: right;
+}
+
+body {
+	background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqH9ywYVoKlpu81rk_TVw0l5Oq6uhtyg-xVw&s");
+}
+
+</style>
+<div class="main">
+	<h1>EaglerClient v1.0</h1>
+	<p>First release of EaglerClient! This is a client that you can use to launch different versions of Eaglercraft! Choose a version and click play below! Bugs: Can't quit Eaglercraft normally, have to quit forcefully</p>
+</div>
+
+
+<div class="footer">
+	<h1>Eaglercraft</h1>
+	<p align="right">
+		<select id="ver">
+			<option value="1-8-8">1.8.8</option>
+			<option value="astra">[SPECIAL] Astra</option>
+			<option value="1-5-2">1.5.2</option>
+			<option value="b1-7-3">b1.7.3</option>
+			<option value="b1-3">b1.3</option>
+			<option value="a1-2-6">a1.2.6</option>
+			<option value="indev">Indev</option>
+		</select>
+		<button id="play-game">Play</button>
+	</p>
+</div>
+
+<script>
+	version = "1.0"
+	async function checkVersion() {
+		const res = await fetch("https://raw.githubusercontent.com/Marko2155/EaglerClient/main/latestversion.txt")
+		if (await res.text() != version) {
+			alert("You're not on the latest version of EaglerClient! Your version is " + version + ", and the latest version of EaglerClient is " + await res.text() + ", download it at https://github.com/Marko2155/EaglerClient")
+		}
+	}
+	checkVersion()
+	document.getElementById("play-game").addEventListener("click", function() {
+		var ver = document.getElementById("ver")
+		console.log(ver.value)
+		if (ver.value == "1-8-8") {
+			location.href = "version/1-8-8.html"
+		} else if (ver.value == "1-5-2") {
+			location.href = "version/1-5-2.html"
+		} else if (ver.value == "b1-7-3") {
+			location.href = "version/b1-7-3.html"
+		} else if (ver.value == "b1-3") {
+			location.href = "version/b1-3.html"
+		} else if (ver.value == "a1-2-6") {
+			location.href = "version/a1-2-6.html"
+		} else if (ver.value == "indev") {
+			location.href = "version/indev.html"
+		} else {
+			location.href = "version/astra.html"
+		}
+	})
+</script>
